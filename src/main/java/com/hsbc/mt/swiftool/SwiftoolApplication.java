@@ -41,7 +41,6 @@ public class SwiftoolApplication {
 			System.out.println(Field.getLabel(field.getName(), sm.getType(), null, locale));
 			System.out.println(field.getValueDisplay(locale) + "\n");
 		}
-
 	}
 
 }

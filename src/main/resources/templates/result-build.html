@@ -16,15 +16,18 @@
         <div class="card-body">
             <div th:switch="${mt.getMessageType()}" class="container my-5">
 
+                <form  th:action="@{/build1}" method="post">
                 <div class="col-md-10">
                         <label for="sender" class="col-form-label">sender </label>
                         <input  th:value="${mt.getSender()}" class="form-control" name="sender" id="sender"/>
                         <label for="field20" class="col-form-label" th:text="${mt.getField20().getLabel(mt.getField20().getName(), mt.getMessageType(), null,locale)}"></label>
                         <input  th:value="${mt.getField20().getValueDisplay(locale)}" class="form-control" name="field20" id="field20"/>
-                        <label for="currency" class="col-form-label" th:text="Currency"></label>
-                        <input  th:value="${mt.getField32A().getCurrency()}" class="form-control" name="currency" id="currency"/>
 
+                    <div class="col-md-6">
+                        <input type="submit" class="btn btn-primary" value=" Build ">
+                    </div>
                 </div>
+                </form>
             </div>
         </div>
     </div>

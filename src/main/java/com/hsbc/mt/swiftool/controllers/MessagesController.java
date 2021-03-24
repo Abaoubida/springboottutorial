@@ -1,5 +1,6 @@
 package com.hsbc.mt.swiftool.controllers;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hsbc.mt.swiftool.service.MessageService;
 import com.prowidesoftware.swift.model.SwiftMessage;
 import com.prowidesoftware.swift.model.Tag;
@@ -15,10 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 @Controller
 public class MessagesController {
@@ -122,4 +120,22 @@ public class MessagesController {
         }
         return "/result-build";
     }
+
+    @PostMapping("/build1")
+    public String buildMessage(Model model, @RequestParam Map<String,String> params) {
+
+
+        MT103 mt=new MT103();
+        mt.setSender(params.get("sender"));
+        mt.addField(new Field20(params.get("field20")));
+
+        String msg=mt.message();
+
+        model.addAttribute("locale", locale);
+        model.addAttribute("mt", mt);
+        model.addAttribute("msg", msg);
+
+        return "build-message-result.html";
+    }
+
 }
