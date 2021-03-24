@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Swift Message Structure</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+</head>
+
+<body>
+<div class="container my-2">
+    <div class="card">
+        <div class="card-body">
+            <div th:switch="${mt.getMessageType()}" class="container my-5">
+
+                <div class="col-md-10">
+                        <label for="sender" class="col-form-label">sender </label>
+                        <input  th:value="${mt.getSender()}" class="form-control" name="sender" id="sender"/>
+                        <label for="field20" class="col-form-label" th:text="${mt.getField20().getLabel(mt.getField20().getName(), mt.getMessageType(), null,locale)}"></label>
+                        <input  th:value="${mt.getField20().getValueDisplay(locale)}" class="form-control" name="field20" id="field20"/>
+                        <label for="currency" class="col-form-label" th:text="Currency"></label>
+                        <input  th:value="${mt.getField32A().getCurrency()}" class="form-control" name="currency" id="currency"/>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
